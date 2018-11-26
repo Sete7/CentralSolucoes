@@ -1,0 +1,228 @@
+<?php
+//chamando as classes
+$pagina = new Pagina();
+$paginaController = new PaginaController();
+$categoria = new Categoria();
+$subcategoria = new Subcategoria();
+
+//====================================================================================================================
+//deletando o pagina
+$del = filter_input(INPUT_GET, "del", FILTER_SANITIZE_NUMBER_INT);
+if ($del):
+    $pagina = $paginaController->retornaPaginaImagem($del);
+    echo $capa = "../upload/" . $pagina->getThumb();
+    if (file_exists($capa) && !is_dir($capa)):
+        unlink($capa);
+    endif;
+    if ($paginaController->Excluir($del)):
+        $resultado = "<div class=\"alert alert-success\">O Pagina </b> foi removido com sucesso</div>";
+    else:
+        $resultado = "<div class=\"alert alert-danger\">Erro ao remover </div>";
+    endif;
+endif;
+
+//iniciando as paginação
+if (empty($_GET['pg'])):
+else:
+    $pg = $_GET['pg'];
+endif;
+if (isset($pg)):
+    $pg = $_GET['pg'];
+else:
+    $pg = 1;
+endif;
+//máximo de links na paginação
+$maxlinks = 4;
+//quantidade de publicação por páginas
+$maximo = 5;
+//$inicio = (($maximo * $pagina) - $maximo);
+$inicio = ($pg * $maximo) - $maximo;
+$listarPagina = $paginaController->ListarPagina($inicio, $maximo);
+?>
+
+<div class="main-panel">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar bar1"></span>
+                    <span class="icon-bar bar2"></span>
+                    <span class="icon-bar bar3"></span>
+                </button>
+                <a class="navbar-brand" href="?pagina=pagina">Novo Pagina</a>
+            </div>
+            <?php require_once './inc/header_top.php'; ?>
+        </div>
+    </nav>
+
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="header">                            
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <h4 class="title">Listagem de Paginas</h4>
+                                </div>
+                                <div class="col-md-8">
+                                    <form class="form-inline" method="post">
+
+                                        <div class="form-group">
+                                            <label>BUSCAR:</label>
+                                            <input type="text" name="txtBuscar" size="65" class="form-control border-input" placeholder="DIGITE TITULO OU RA E SELECIONE O TIPO">
+                                        </div>
+
+                                        <div class="form-group">                                        
+                                            <select name="slTipo" id="slTipo" class="form-control border-input">
+                                                <option value="1">Titulo</option>
+                                                <option value="2">RA</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group">                                        
+                                            <button type="submit" class="btn btn-icon btn-info"><i class="fa fa-search" style="font-size:1.3em;"> </i>BUSCAR</button>
+                                        </div>
+
+                                    </form>
+                                </div>
+                            </div>                       
+                        </div>
+
+                        <hr>
+
+                        <?php
+                        $termo = filter_input(INPUT_POST, "txtBuscar", FILTER_SANITIZE_STRING);
+                        $tipo = filter_input(INPUT_POST, "slTipo", FILTER_SANITIZE_NUMBER_INT);
+
+                        if ($termo == null):
+                            ?>
+                            <div class="content table-responsive table-full-width">
+                                <table class="table table-striped">
+                                    <thead>
+                                    <th>Cod</th>
+                                    <th>Capa</th>
+                                    <th>Titulo</th>
+                                    <th>Categoria</th>
+                                    <th>SubCategoria</th>                                    
+                                    <th>Status</th>                            
+                                    <th>Ações</th>                            
+                                    <th>Galeria</th>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        if ($listarPagina == null):
+                                            echo '<td colspan="8">Nesse momento não temos paginas cadastrado</td>';
+                                        else:
+                                            foreach ($listarPagina as $pts):
+                                                ?>
+
+                                                <tr>
+                                                    <td><?= $pts->getCod(); ?></td>
+                                                    <td> <img src="../upload/<?= $pts->getThumb(); ?>" width="100" alt=""/></td>
+                                                    <td><?= $pts->getTitulo(); ?></td>
+                                                    <td><?= $pts->getCategoria()->getTitulo(); ?></td>
+                                                    <td><?= $pts->getSubcategoria()->getSub_titulo(); ?></td>                                                    
+                                                    <td><?= ($pts->getStatus() == 1) ? '<btn class="btn btn-fill btn-success btn-icon"><i class="fa ti-check"></i></btn></td>' : '<btn class="btn btn-fill btn-danger btn-icon"><i class="fa fa-times"></i></btn></td>' ?>
+                                                    <td>
+                                                        <a href="?pagina=editarPagina&cod=<?= $pts->getCod(); ?>" class="btn btn-icon btn-primary"><i class="ti-pencil-alt2"></i></a>
+                                                        <a href="?pagina=listarPagina&del=<?= $pts->getCod(); ?>" class="btn btn-icon btn-danger" onclick="return confirm('Deseja realmente excluir o pagina <?= $pts->getTitulo(); ?>');"><i class="ti-close"></i></a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="?pagina=galeriaPagina&cod=<?= $pts->getCod(); ?>" class="btn btn-fill btn-info btn-icon"><i class="fa fa-camera"></i></a>
+
+                                                    </td>
+                                                </tr>
+
+                                                <?php
+                                            endforeach;
+                                        endif;
+                                        ?>
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+                        <!--======================================================PAGINACAO DA PAGINA =========================================================-->           
+
+                        <?php
+                        //paginação de resultados
+                        $total = $paginaController->RetornaQtdPagina();
+                        $total_paginas = ceil($total / $maximo);
+                        if ($total > $maximo):
+                            echo '<div class="paginator">';
+                            echo '<ul class="pagination">';
+                            echo '<li><a href="dashboard.php?pagina=listarPagina&pg=1">Primeira Página</a></li>';
+                            for ($i = $pg - $maxlinks; $i <= $pg - 1; $i++):
+                                if ($i >= 1):
+                                    echo '<li><a href="dashboard.php?pagina=listarPagina&pg=' . $i . '">' . $i . '</a><li>';
+                                endif;
+                            endfor;
+                            echo '<li><a class="active" href="dashboard.php?pagina=listarPagina&pg=' . $pg . '">' . $pg . '</a></li>';
+                            for ($i = $pg + 1; $i <= $pg + $maxlinks; $i++):
+                                if ($i <= $total_paginas):
+                                    echo '<li><a href="dashboard.php?pagina=listarPagina&pg=' . $i . '">' . $i . '</a></li>';
+                                endif;
+                            endfor;
+                            echo '<li><a href="dashboard.php?pagina=listarPagina&pg=' . $total_paginas . '"">Última Página</a></li>';
+                            echo '</ul>';
+                            echo '</div>';
+                        endif;
+                        ?>            
+
+                        <!--====================================================== FIM DA PAGINACAO DA PAGINA =========================================================-->
+                    </div>
+
+                    <?php
+                else:
+                    $paginaProcurado = $paginaController->BuscarPagina($termo, $tipo);
+                    ?>
+                    <div class="content table-responsive table-full-width">
+                        <table class="table table-striped">
+                            <thead>
+                            <th>RA Pagina</th>
+                            <th>Capa</th>
+                            <th>Titulo</th>
+                            <th>Categoria</th>
+                            <th>SubCategoria</th>
+                            <th>Valor</th>
+                            <th>Status</th>                            
+                            <th>Ações</th>                                                        
+                            </thead>
+                            <tbody>
+                                <?php
+                                if ($paginaProcurado == null):
+                                    echo '<td colspan="9">Nesse momento não temos paginas cadastrado</td>';
+                                else:
+                                    foreach ($paginaProcurado as $pts):
+                                        ?>
+
+                                        <tr>
+                                            <td><?= $pts->getCod(); ?></td>
+                                            <td> <img src="../upload/<?= $pts->getThumb(); ?>" width="100" alt=""/></td>
+                                            <td><?= $pts->getTitulo(); ?></td>
+                                            <td><?= $pts->getCategoria()->getTitulo(); ?></td>
+                                            <td><?= $pts->getSubcategoria()->getSub_titulo(); ?></td>                                            
+                                            <td><?= ($pts->getStatus() == 1) ? '<btn class="btn btn-fill btn-success btn-icon"><i class="fa ti-check"></i></btn></td>' : '<btn class="btn btn-fill btn-danger btn-icon"><i class="fa fa-times"></i></btn></td>' ?>
+                                            <td>
+                                                <a href="?pagina=editarPagina&cod=<?= $pts->getCod(); ?>" class="btn btn-icon btn-primary"><i class="ti-pencil-alt2"></i></a>
+                                                <a href="?pagina=listarPagina&del=<?= $pts->getCod(); ?>" class="btn btn-icon btn-danger" onclick="return confirm('Deseja realmente excluir o pagina <?= $pts->getTitulo(); ?>');"><i class="ti-close"></i></a>
+                                            </td>
+                                        </tr>
+
+                                        <?php
+                                    endforeach;
+                                endif;
+                                ?>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            <?php
+            endif;
+            ?>
+        </div>
+    </div>
+</div>

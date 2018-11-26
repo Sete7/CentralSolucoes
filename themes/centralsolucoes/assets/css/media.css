@@ -1,0 +1,185 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 19/10/2018, 17:41:26
+    Author     : Inove-2
+*/
+/*440*/
+@media(min-width: 27.5em){
+    .header-servicos a {width: 100%;border-radius: 5px;float: left;background: #990000;color: #fff;margin-bottom: 2em;padding: 1.2em 0;}
+}
+@media(min-width: 22.5em){
+    .list-fone{    position: relative;}        
+}
+
+/*480*/
+@media(min-width: 30em){
+    /*TERCEIRIZACAO*/
+    .box-thumb-prof {width: calc(50% - 5px);float: left;}
+    .desc-prof {height: 100px;}
+    .main-profissionais {padding: 4rem 0;}
+    .box-thumb-prof-b {width: calc(50% - 5px);float: left;    margin-bottom: 2em;margin: 0px 2.5px;}  
+    .bx-banner-receita{width: 100%;float: left;}
+    .bx-receita {width: calc(50% - 5px);float: left;margin: 0 2.5px;}
+    /*BLOG*/
+    .row-blog{width: calc(50% - 20px); margin: 0 10px 50px 10px;float: left;}
+}
+/*600*/
+@media(min-width: 37.5em){
+    /*.central-contato {float: none !important;}*/
+    .banner-desc-info {width: calc(50% - 5px);float: left;margin: 0 2.5px;}
+    .icon-pq {width: calc(50% - 5px);float: left;margin: 1em 2.5px;}
+    .icon-pq img {width: 100%; height: 183px; }
+    /*CONDOMINIO*/
+    .thumb-info-resd {width: calc(50% - 5px);float: left; margin: 0 2.5px;}
+    .thumb-info-resd .titulo-servicos{width: 100%; height: 100px;float: left;}
+    /*TERCEIRIZACAO*/    
+    .thumb-desc-tec {width: calc(50% - 5px);float: left;margin: 0 2.5px;}
+    .thumb-ferramentas{width: 280px; margin: auto;} 
+    .thumb-vant-tec-tbl {width: calc(50% - 5px);}
+    .thumb-star-tbl {margin-bottom: 0.5em;}
+    .desc-info-star {height: 150px;}
+    .box-thumb-prof {width: calc(33.33333333333333% - 5px);float: left;}
+    .main-profissionais {padding: 4rem 0;}
+    .box-thumb-prof-b {width: calc(33.33333333333333% - 5px);float: left;}
+    .sec-profissionais-b {width: 60%;margin: 0 20%;margin-top: 0; }
+    .modal { width:550px;height: 250px;}
+    .bx-receita {width: calc(33.33333333333333% - 5px);}
+    /*BLOG*/
+    .row-blog{width: calc(33.33333333333333% - 20px);}
+    /*ARTIGO*/
+    .box-artigo .thumb-img-artigo{width: 68%;margin: 0 2% 25px 0;float: left;border-right: 1px solid #ddd;padding-right: 1em;}
+    .box-artigo .artigos-recentes{width: 28%;float: left;margin-left: 2%;}
+}
+/*700*/
+@media(min-width: 43.75em){
+    .main-logo {width: 239px;height: 50px;margin: auto;float: left;}
+    .logo {margin:0;}
+    .login-topo {width: auto; position: relative;float: right; margin: 0 0 0 0;}
+    .topo { height: auto; }
+    .central-contato {float: left;}
+    /*QUEM SOMOS*/
+    .box-text-rodape{float: left;height: 165px;}
+    .box-text-rodape h1{ font-size: 3rem;color: #fff;font-weight: 400;line-height: 165px;}
+    /*TERCEIRIZACAO*/
+    .bx-terceriza {width: calc(50% - 5px);float: left;margin: 0 2.5px;}
+    .thumb-vant-tec {width: calc(50% - 5px);float: left;margin: 0 2.5px;}
+    .thumb-vant-tec .desc-empresa { height: 170px;}
+    .thumb-desc-tec {width: calc(50% - 5px);float: left;margin: 0 2.5px;}
+    .thumb-ferramentas{width: 280px; margin: auto;}
+    .box-thumb-prof {width: calc(25% - 5px);float: left;} 
+    .thumb-desc-tec-b {width: calc(50% - 5px);float: left;margin: 0 2.5px;}
+    .box-thumb-prof-b {width: calc(25% - 5px);float: left;}    
+    .thumb-info-cont {width: calc(33.33333333333333% - 5px);float: left;margin: 0 2.5px;}
+    .thumb-info-cont .titulo-servicos {width: 100%;float: left;height: 125px;margin-bottom: 2em;}
+    .header-servicos a{width: 50%;}
+    .header-servicos a:nth-child(1) {width: 48%;    padding: 2.15em;margin-right: 1%;}
+    /*DEPARTAMENTO-PESSOAL*/
+    .info-dp{width: calc(50% - 5px);float: left;margin: 0 2.5px;} 
+    .thumb-info-dp{margin-top: 6em;margin-bottom: 5em;}
+    .desc-info-dp{padding: 2em 0;}
+    .bx-btn-cotato{padding: 0 15%;}
+    .desc-df{padding: 0 5em;}
+}
+/*850*/
+@media(min-width: 53.125em){
+    .banner-desc-info {width: calc(33.33333333333333% - 5px);}
+    .tlt-ctt-footer{text-align: center;}    
+    .tlt-ctt-footer h2 {text-align: center;}    
+    .tlt-ctt-footer p {text-align: center;}
+    .box-ctt-footer{width: 100%;}
+    .contato-footer{width: calc(50% - 5px);float: left; margin: 0 2.5px;}    
+    .banner-desc-info .thumb {width: 150px;}
+    /*TERCEIRIZACAO*/    
+    .thumb-desc-tec {width: calc(33.33333333333333% - 5px);float: left;margin: 0 2.5px;}
+    .thumb-ferramentas{width: 280px; margin: auto;}
+    .thumb-desc-tec-b {width: calc(33.33333333333333% - 5px); float: left;margin: 0 2.5px;}
+    .bx-receita {width: calc(25% - 5px);}
+    /*DEPARTAMENTO FISCAL*/
+    .bx-departamentos{padding: 3em 5em;}
+    .bx-departamentos h1{margin-bottom: 1em;}
+    /*BLOG*/
+    .row-blog{width: calc(25% - 20px);}
+}
+/*862*/
+@media(min-width: 53.875em){.header-servicos a{width: 40%;padding: 0.3em;}
+                            .btn-empresa{width: 800px;margin: auto;}.header-servicos a:nth-child(1) {width: 40%;    padding: 1.2em 0.5em;margin-right: 1%;}.container-cont {width: calc(50% - 5px);}
+}
+
+
+
+/*900*/
+@media(min-width: 56.25em){
+    .main-header {padding: 1em 0;}
+    .topo {height: auto;padding-right: 1em;}
+    .sidebarBtn {position: absolute;top: 12px;right: 10px;}
+    .central-contato {width: 280px;position: relative;top: -12px;}
+    .central-contato ul li .thumb-phone {float: left;margin-right: -0.9em;}
+    .central-contato ul li .box-central h3 {font-size: 0.8em;width: 205px;}
+    .central-contato {margin-left: 2em;}
+    /*CONDOMINIO*/
+    .thumb-info-resd {width: calc(33.33333333333333% - 5px);float: left; margin: 0 2.5px;}
+    /*TERCEIRIZACAO*/
+    .thumb-vant-tec .desc-empresa {height: 170px;}
+    .thumb-desc-tec {width: calc(33.33333333333333% - 5px);float: left;margin: 0 2.5px;}
+    .thumb-vant-tec-tbl {width: calc(33.33333333333333% - 5px);}
+    .desc-info-star {height: 80px;}
+    .header-solution{margin-bottom: 3.5em;}
+    .box-thumb-prof {width: calc(20% - 5px);float: left;}
+    .box-thumb-prof-b {width: calc(20% - 5px);float: left;} 
+    .thumb-info-cont {width: calc(25% - 5px);float: left;margin: 0 2.5px;}
+    .thumb-info-cont .titulo-servicos {width: 100%;float: left;height: 125px;margin-bottom: 2em;}    
+    .bx-cond {width: 80%;margin: 0 10%;}
+}
+/*1000*/
+@media(min-width: 62.5em){
+    .main-header {padding: 0;}
+    .topo {padding: 2.5em 0 0 0;}    
+    .login-topo {width: 255px;float: none;margin: auto;}
+    .central-contato{position: relative;float: right; top: -45px;}
+    .sidebarBtn {position: absolute;top: 30px;}
+    .social-topo {top: 0;position: relative;}
+    .thumb-valores {width: 50%;float: left;}
+    .desc-valores {width: 50%;}
+    .icon-pq {width: calc(25% - 5px);}
+    /*QUEM SOMOS*/
+    .box-thumb-sustenta{width: calc(50% - 5px);float: left;margin: 0 2.5px;}
+    .box-thumb-sustenta .thumb-sustenta{padding-top: 6em;float: right;}
+    /*CONDOMINIO*/
+    .container-cond{width: calc(50% - 5px);float: left; margin: 0 2.5px;} 
+    .thumb-cond {width: 350px;padding-top: 6em;}
+    .desc-cond{width: calc(50% - 5px);float: left; margin: 0 2.5px;} 
+    .thumb-resd {width: 400px;float: right;}
+    /*TERCEIRIZACAO*/
+    .bx-terceriza {width: calc(50% - 5px);float: left;margin: 0 2.5px;}
+    .thumb-vant-tec {width: calc(33.33333333333333% - 5px);float: left;margin: 0 2.5px;}
+    .thumb-vant-tec .desc-empresa {height: 100px;}
+    .thumb-desc-tec {width: calc(25% - 5px);}
+    .thumb-ferramentas {width: 230px;}
+    .desc-ferramentas{width: 100%;height: 80px;float: left;}
+    .thumb-desc-tec-b {width: calc(33.33333333333333% - 5px);float: left;}
+    /*TERCEIRIZACAO*/
+    .box-thumb-prof {width: calc(16.66666666666667% - 5px);float: left;}
+    /*CONTABILIDADE*/
+    .desc-contabilidade {padding: 1em 0 2em 5em;}
+}
+/*1100*/
+@media(min-width: 68.75em){
+    .content{width: 80%;margin: 0 10%;}   
+}
+/*1120*/
+@media(min-width: 70em){
+    .sidebar_nav{display: none;}
+    .sidebarBtn {display: none;}
+    .header-menu {display: block;width: 100%;position: relative;line-height: 2.5;}
+    .topo {height: auto;padding-right: 0;}    
+    .central-contato ul li .box-central h3 {font-size: 0.8em;width: 205px;}
+    .desc-valores {width: 50%;padding: 1em 2%;}
+    .desc-valores h2 {margin-bottom: 1em;}
+    .info-contato-home{padding-left: 3em;}
+    /*CONDOMINIO*/
+    .thumb-info-resd {width: calc(25% - 5px);float: left; margin: 0 2.5px;}
+}
